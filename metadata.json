@@ -1,0 +1,6 @@
+{
+  "name": "Minimalist Study & Productivity Companion",
+  "description": "An AI-powered minimalist productivity and study companion featuring smart prioritization, Pomodoro timer, flashcards for active recall, structured notepad, and proactive recommendations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

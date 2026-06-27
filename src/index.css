@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer utilities {
+  /* Elegant customized premium scrollbars */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.4);
+  }
+}
+
+/* Base custom animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.35);
+  }
+}
+
+.pulse-glow-indigo {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   GLOBAL FOCUS LIGHT THEME OVERRIDES
+   Centralized cascading style layer to dynamically adjust background opacity,
+   borders, shadows, inputs, text hierarchies, and components.
+   ========================================================================== */
+
+/* Root Level light mode configuration */
+.light-theme {
+  background-color: #f8fafc !important; /* slate-50 */
+  color: #0f172a !important; /* slate-900 */
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Ambient Blurs: Softened to prevent blinding brightness */
+.light-theme .blur-\[120px\] {
+  background-color: rgba(99, 102, 241, 0.03) !important;
+}
+
+/* Navigation Rail Override */
+.light-theme nav {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-right-color: #e2e8f0 !important; /* slate-200 */
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.03);
+}
+
+/* Top Status Header Override */
+.light-theme header {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+/* Cards & Containers: Solid white background with subtle shadow & refined borders */
+.light-theme .bg-slate-900\/40 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border-color: #e2e8f0 !important; /* slate-200 */
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 8px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Darker/Flipped Flashcard Deck Container & Sidebar elements */
+.light-theme .bg-slate-900\/90 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #cbd5e1 !important; /* slate-300 */
+}
+
+/* General Border Elements mapping to slate-200 */
+.light-theme .border-slate-800\/80,
+.light-theme .border-slate-800\/60,
+.light-theme .border-slate-850 {
+  border-color: #e2e8f0 !important; /* slate-200 */
+}
+
+/* Semi-heavy border elements mapping to slate-300 */
+.light-theme .border-slate-800\/85 {
+  border-color: #cbd5e1 !important; /* slate-300 */
+}
+
+/* Input Fields & Textareas: Light background with clear contrast and high visibility */
+.light-theme .bg-slate-950\/60,
+.light-theme .bg-slate-950\/40,
+.light-theme .bg-slate-950\/65 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important; /* slate-300 */
+  color: #0f172a !important; /* slate-900 */
+}
+
+.light-theme .bg-slate-950\/60:focus,
+.light-theme .bg-slate-950\/40:focus {
+  border-color: #6366f1 !important; /* indigo-500 */
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Override placeholder color */
+.light-theme .placeholder-slate-600::placeholder,
+.light-theme input::placeholder,
+.light-theme textarea::placeholder {
+  color: #94a3b8 !important; /* slate-400 */
+}
+
+/* Input option drop-downs */
+.light-theme select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Text Hierarchy Overrides */
+.light-theme .text-slate-100,
+.light-theme .text-slate-50 {
+  color: #0f172a !important; /* slate-900 */
+}
+
+.light-theme .text-slate-200 {
+  color: #1e293b !important; /* slate-800 */
+}
+
+.light-theme .text-slate-300 {
+  color: #334155 !important; /* slate-700 */
+}
+
+.light-theme .text-slate-400 {
+  color: #475569 !important; /* slate-600 */
+}
+
+.light-theme .text-slate-500 {
+  color: #64748b !important; /* slate-500 */
+}
+
+.light-theme .text-slate-600 {
+  color: #475569 !important;
+}
+
+/* Pomodoro Specific Component Enhancements */
+.light-theme #pomodoro-timer-display {
+  color: #0f172a !important; /* slate-900 */
+}
+
+.light-theme .stroke-slate-800\/60 {
+  stroke: #cbd5e1 !important; /* slate-300 background circle ring */
+}
+
+.light-theme .bg-slate-950 {
+  background-color: #f1f5f9 !important; /* slate-100 */
+  color: #334155 !important;
+}
+
+/* Interactive Active Recall Card inside Decks */
+.light-theme .bg-slate-950\/40 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.02) !important;
+}
+
+/* Interactive Active Recall Card (Flipped State) */
+.light-theme .border-indigo-500\/50.bg-indigo-500\/5 {
+  background-color: rgba(99, 102, 241, 0.04) !important;
+  border-color: rgba(99, 102, 241, 0.5) !important;
+}
+
+/* Task Checkbox & Action Button Overrides */
+.light-theme .border-slate-700 {
+  border-color: #cbd5e1 !important; /* slate-300 */
+}
+
+.light-theme .hover\:bg-slate-800\/30:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.light-theme .hover\:bg-slate-800\/40:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.light-theme .hover\:bg-slate-750:hover {
+  background-color: #e2e8f0 !important;
+}
+
+.light-theme .hover\:bg-slate-700:hover {
+  background-color: #e2e8f0 !important;
+}
+
+.light-theme .hover\:text-slate-200:hover {
+  color: #0f172a !important;
+}
+
+/* Socrates Coach Companion Overrides */
+.light-theme #socrates-coach-container {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-theme .bg-slate-950\/20 {
+  background-color: #f8fafc !important; /* slate-50 chat container background */
+}
+
+.light-theme .bg-slate-950\/40 {
+  background-color: #f1f5f9 !important; /* slate-100 chat header bg */
+}
+
+.light-theme .bg-slate-900 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* Scrollbar styling overrides for light mode */
+.light-theme .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.light-theme .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.light-theme .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.3);
+}
+
+/* Navigation tabs active state background adjustment for light theme */
+.light-theme .bg-indigo-500\/15 {
+  background-color: rgba(99, 102, 241, 0.08) !important;
+}
+
+/* Overrides for generic slate-800 widgets or inputs */
+.light-theme .bg-slate-800\/80,
+.light-theme .bg-slate-800\/50,
+.light-theme .bg-slate-800\/40 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+.light-theme .border-slate-700\/60,
+.light-theme .border-slate-700\/50 {
+  border-color: #cbd5e1 !important;
+}
+
+/* Badges and tags adjustments */
+.light-theme .bg-indigo-500\/10,
+.light-theme .bg-indigo-500\/15 {
+  background-color: rgba(99, 102, 241, 0.08) !important;
+}
+
+.light-theme .bg-amber-500\/10 {
+  background-color: rgba(245, 158, 11, 0.08) !important;
+}
+
+.light-theme .bg-emerald-500\/10 {
+  background-color: rgba(16, 185, 129, 0.08) !important;
+}
+
+.light-theme .text-indigo-400,
+.light-theme .text-indigo-300 {
+  color: #4f46e5 !important; /* indigo-600 */
+}
+
+.light-theme .text-emerald-400 {
+  color: #059669 !important; /* emerald-600 */
+}
+
+.light-theme .text-amber-400,
+.light-theme .text-amber-300,
+.light-theme .text-amber-500 {
+  color: #d97706 !important; /* amber-600 */
+}
+
+/* Flashcards library specific list footer items */
+.light-theme .border-t.border-slate-100 {
+  border-top-color: #e2e8f0 !important;
+}
+
+/* AI Insight Hero banner contrast adjustment on light theme */
+.light-theme .bg-gradient-to-br.from-indigo-950\/80 {
+  background-image: linear-gradient(135deg, #312e81 0%, #4c1d95 50%, #1e1b4b 100%) !important;
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.25) !important;
+}
+.light-theme .bg-gradient-to-br.from-indigo-950\/80 .text-slate-300 {
+  color: #e2e8f0 !important;
+}
+
+/* Socrates chatbot user messages */
+.light-theme .bg-gradient-to-br.from-indigo-600 {
+  background-image: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
+}
+
+/* Footer layout rules */
+.light-theme footer {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  border-top-color: #e2e8f0 !important;
+}
